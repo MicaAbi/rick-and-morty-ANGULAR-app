@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { SeriesRoutingModule } from './series-routing.module';
+
 // Components
 import { CardComponent } from './basic-components/card/card.component';
 import { CharactersComponent } from './pages/characters/characters.component';
@@ -19,7 +21,8 @@ import { SearchBarComponent } from './basic-components/search-bar/search-bar.com
     SearchBarComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SeriesRoutingModule
   ],
   exports: [
     CharactersComponent

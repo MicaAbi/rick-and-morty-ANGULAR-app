@@ -16,12 +16,15 @@ export class MenuComponent {
       this.items = [
           {
               label: 'Characters',
+              routerLink: 'rm/characters'
           },
           {
               label: 'Episodes',
+              routerLink: 'rm/episodes'
           },
           {
               label: 'Locations',
+              routerLink: 'rm/locations'
           }
       ];
   }

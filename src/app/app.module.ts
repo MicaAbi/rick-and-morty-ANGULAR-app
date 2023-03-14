@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 // Modulos propios
-import { SeriesRMModule } from './series-rm/series-rm.module';
+import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
 // Componentes
@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    SeriesRMModule,
+    AppRoutingModule,
     SharedModule
   ],
   providers: [],
