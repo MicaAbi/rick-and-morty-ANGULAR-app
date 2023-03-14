@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { SeriesRoutingModule } from './series-routing.module';
 
 // Components
@@ -22,6 +24,8 @@ import { SearchBarComponent } from './basic-components/search-bar/search-bar.com
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    PrimeNgModule,
     SeriesRoutingModule
   ],
   exports: [

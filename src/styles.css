@@ -15,3 +15,25 @@ body {
     position: relative;
     padding-bottom: 2rem;
 }
+
+.main-wrapper {
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 24px;
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    gap: 15px;
+}
+
+.my-card {
+    background-color: var(--surface-a);
+    padding: 15px;
+    border-radius: 3px;
+    border: 1px solid var(--surface-d);
+    display: flex;
+}

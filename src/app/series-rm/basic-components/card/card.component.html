@@ -1,1 +1,8 @@
-<p>card works!</p>
+<p-card header="Header" subheader="Subheader" [style]="{'width': '18vw', 'min-width': '200px'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png">
+    </ng-template>
+    <p>Detail card</p>
+    <ng-template pTemplate="footer">
+    </ng-template>
+</p-card>
