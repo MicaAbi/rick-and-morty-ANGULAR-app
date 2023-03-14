@@ -1,0 +1,15 @@
+h1 {
+    color: var(--text-color-secondary);
+}
+
+.error-404 {
+    font-size: 150px;
+    opacity: 90%;
+}
+
+.img-error {
+    opacity: 90%;
+    max-width: 40vw;
+    max-height: 70vh;
+    margin: auto;
+}

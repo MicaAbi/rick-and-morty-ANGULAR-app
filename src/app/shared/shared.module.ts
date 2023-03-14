@@ -6,6 +6,7 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 // Componentes
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 
 
@@ -14,13 +15,15 @@ import { MenuComponent } from './menu/menu.component';
   declarations: [
     ErrorPageComponent,
     MenuComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
     PrimeNgModule
   ],
   exports: [
-    MenuComponent
+    MenuComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
