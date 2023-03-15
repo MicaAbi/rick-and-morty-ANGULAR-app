@@ -5,16 +5,21 @@
         <app-location-bar></app-location-bar>
     </div>
     
-    <div class="row w-5">
+    <div>
         <app-search-bar></app-search-bar>
     </div>
 
     <div class="row cards-wrapper w-12">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
+
+        <div *ngIf="characters.length === 0" >
+            <span>Character not found</span>
+        </div>
+
+        <div *ngFor="let character of characters" class="sm:w-5 md:w-3 lg:w-2">
+            <app-card [subtitle]="character.name"
+                      [urlImg]="character.image">
+            </app-card>
+        </div>
     </div>
 
 </div>

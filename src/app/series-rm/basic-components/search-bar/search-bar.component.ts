@@ -12,8 +12,10 @@ export class SearchBarComponent {
   
   constructor( private seriesService: SeriesService ) {}
 
-  searchWorld() {
-    if(this.query.trim().length === 0) { return }
-    this.seriesService.searchWord(this.query.trim())
+  searchWorld(): void {
+    this.query = this.query.trim()
+    if(this.query.length === 0) { return }
+    this.seriesService.searchWord(this.query)
+    this.query = ''
   }
 }
