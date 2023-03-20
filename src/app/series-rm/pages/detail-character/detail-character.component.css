@@ -1,0 +1,14 @@
+.link-list {
+    max-height: 360px;
+    overflow-y: scroll;
+    width: 100%;
+    padding: 0px 10px;
+    margin-top: 20px;
+}
+
+@media (min-width: 992px) {
+
+    .link-list {
+        max-height: 440px;
+    }
+}

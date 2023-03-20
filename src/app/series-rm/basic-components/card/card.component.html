@@ -1,9 +1,16 @@
-<p-card [header]="title" [subheader]="subtitle" styleClass="p-card-shadow">
+<p-card [header]="title" [subheader]="subtitle" styleClass="p-card-shadow" [style]="{'min-width': '180px'}">
     <ng-template pTemplate="header">
         <img alt="Card" [src]="urlImg">
     </ng-template>
-    <div *ngIf="detail.length != 0">
+    <div *ngIf="character">
         <hr>
-        <p>{{ detail }}</p>
+        <div class="pt-3">
+            <p>Name: {{ character.name }}</p>
+            <p>Status: {{ character.status }}</p>
+            <p>Species: {{ character.species }}</p>
+            <p>Gender: {{ character.gender }}</p>
+            <p>Origin: {{ character.origin.name}}</p>
+            <p>Location: {{ character.location.name }}</p>
+        </div>
     </div>
 </p-card>

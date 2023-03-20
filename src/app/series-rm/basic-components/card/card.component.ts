@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Character } from '../../interfaces/allCharacters.interface';
 
 @Component({
   selector: 'app-card',
@@ -13,7 +14,7 @@ export class CardComponent {
 
   @Input() urlImg: string = ''
 
-  @Input() detail: string = ''
+  @Input() character!: Character
 
   constructor() {}
 

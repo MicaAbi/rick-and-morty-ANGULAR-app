@@ -8,18 +8,24 @@ import { SeriesRoutingModule } from './series-routing.module';
 // Components
 import { CardComponent } from './basic-components/card/card.component';
 import { CharactersComponent } from './pages/characters/characters.component';
+import { DetailCharacterComponent } from './pages/detail-character/detail-character.component';
+import { DetailLinkComponent } from './basic-components/detail-link/detail-link.component';
 import { EpisodesComponent } from './pages/episodes/episodes.component';
 import { LocationBarComponent } from './basic-components/location-bar/location-bar.component';
 import { LocationsComponent } from './pages/locations/locations.component';
+import { PaginatorComponent } from './basic-components/paginator/paginator.component';
 import { SearchBarComponent } from './basic-components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [  
     CardComponent,
     CharactersComponent,
+    DetailCharacterComponent,
+    DetailLinkComponent,
     EpisodesComponent,
     LocationBarComponent,
     LocationsComponent, 
+    PaginatorComponent,
     SearchBarComponent,
   ],
   imports: [

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { SeriesService } from '../../services/series.service';
 
@@ -8,6 +8,8 @@ import { SeriesService } from '../../services/series.service';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
+
+  @Input() section: string = ''
   query: string = ''
   
   constructor( private seriesService: SeriesService ) {}
@@ -15,7 +17,7 @@ export class SearchBarComponent {
   searchWorld(): void {
     this.query = this.query.trim()
     if(this.query.length === 0) { return }
-    this.seriesService.searchWord(this.query)
+    this.seriesService.searchWord(this.query, this.section)
     this.query = ''
   }
 }

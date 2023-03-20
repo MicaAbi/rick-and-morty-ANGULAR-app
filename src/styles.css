@@ -24,6 +24,7 @@ body {
 }
 
 .cards-wrapper {
+    min-height: 35vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -31,12 +32,26 @@ body {
     row-gap: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
+
 }
 
-.my-card {
+.wrapper {
     background-color: var(--surface-a);
     padding: 15px;
     border-radius: 3px;
     border: 1px solid var(--surface-d);
-    display: flex;
+}
+
+/* BREAK POINTS */
+
+@media (max-width: 768px) {
+    .cards-wrapper {
+        min-height: 30vh;
+    }
+}
+
+@media (max-width: 992px) {
+    .cards-wrapper {
+        min-height: 55vh;
+    }
 }

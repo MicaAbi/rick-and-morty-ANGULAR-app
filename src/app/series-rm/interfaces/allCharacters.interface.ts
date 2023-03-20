@@ -1,4 +1,4 @@
-export interface AllCharacters {
+export interface ResponseAllCharacters {
     info:    Info;
     results: Character[];
 }
@@ -7,7 +7,7 @@ export interface Info {
     count: number;
     pages: number;
     next:  string;
-    prev:  null;
+    prev:  string | null;
 }
 
 export interface Character {

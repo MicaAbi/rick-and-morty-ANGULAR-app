@@ -17,11 +17,15 @@ export class CharactersComponent implements OnInit {
     return this.seriesService.characters
   }
 
+  get infoResp() {
+    return this.seriesService.infoResp
+  }
+
   constructor(private seriesService: SeriesService) {}
 
   ngOnInit(): void {
     this.seriesService.loadCharacters()
-    // this.getCharacters()
+    // this.getCharacters()    
   }
 
   // getCharacters() {
@@ -36,4 +40,7 @@ export class CharactersComponent implements OnInit {
   //     )
   // }
 
+  clickCard(infoCharacter: Character) {
+    console.log('clickeaste la card')
+  }
 }
