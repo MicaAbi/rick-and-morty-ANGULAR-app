@@ -32,7 +32,11 @@ export class DetailCharacterComponent implements OnInit, OnDestroy {
         this.seriesService.loadASingleCharacter(id)
       })
 
-    // this.characterSubscrition = this.seriesService.getOneCharacter().subscribe(char => this.character = char)
+    // this.characterSubscrition = this.seriesService.getOneCharacter()
+    //     .subscribe({
+    //       next: char => this.character = char
+    //     })
+
   }
 
   ngOnDestroy(): void {

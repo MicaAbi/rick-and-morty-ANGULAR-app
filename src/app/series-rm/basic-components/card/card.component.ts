@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Character } from '../../interfaces/allCharacters.interface';
 import { Episode } from '../../interfaces/allEpisodes';
@@ -26,7 +26,5 @@ export class CardComponent {
   @Input() linkCard: string = ''
 
   @Input() detail: boolean = false
-
-  constructor() {}
 
 }

@@ -1,14 +1,14 @@
 <div class="main-wrapper">
 
     <div class="row w-12">
-        <app-location-bar></app-location-bar>
+        <app-location-bar section="Episodes" detail="Episode detail"></app-location-bar>
     </div>
 
-    <span *ngIf="!episode; else detailEpisode">
+    <span *ngIf="!episode; else episodeDetail">
         Espere por favor...
     </span>
 
-    <ng-template #detailEpisode>
+    <ng-template #episodeDetail>
 
         <section class="flex flex-wrap w-12 justify-content-between gap-4">
 

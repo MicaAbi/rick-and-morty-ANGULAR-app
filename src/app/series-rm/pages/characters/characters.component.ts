@@ -40,7 +40,4 @@ export class CharactersComponent implements OnInit {
   //     )
   // }
 
-  clickCard(infoCharacter: Character) {
-    console.log('clickeaste la card')
-  }
 }

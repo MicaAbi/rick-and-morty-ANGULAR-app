@@ -45,7 +45,7 @@ export class SeriesService {
   //   return of([...this._characters])
   // }
 
-  getOneCharacter():Observable<Character> {
+  getOneCharacter(): Observable<Character> {
     return of(this._oneCharacter)
   }
 
@@ -53,7 +53,7 @@ export class SeriesService {
     return of(this._episodes)
   }
 
-  getOneEpisode():Observable<Episode> {
+  getOneEpisode(): Observable<Episode> {
     return of(this._oneEpisode)
   }
 
@@ -61,7 +61,7 @@ export class SeriesService {
     return of(this._locations)
   }
 
-  getOneLocation():Observable<Location> {
+  getOneLocation(): Observable<Location> {
     return of(this._oneLocation)
   }
 
