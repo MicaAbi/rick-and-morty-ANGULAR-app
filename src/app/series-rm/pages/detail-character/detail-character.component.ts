@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { Character } from '../../interfaces/allCharacters.interface';
 import { SeriesService } from '../../services/series.service';

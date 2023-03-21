@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { Character } from '../../interfaces/allCharacters.interface';
+import { Episode } from '../../interfaces/allEpisodes';
+import { Location } from '../../interfaces/allLocations';
 
 @Component({
   selector: 'app-card',
@@ -15,6 +18,14 @@ export class CardComponent {
   @Input() urlImg: string = ''
 
   @Input() character!: Character
+
+  @Input() episode!: Episode
+
+  @Input() location!: Location
+
+  @Input() linkCard: string = ''
+
+  @Input() detail: boolean = false
 
   constructor() {}
 

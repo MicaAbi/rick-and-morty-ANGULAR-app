@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CharactersComponent } from './pages/characters/characters.component';
 import { DetailCharacterComponent } from './pages/detail-character/detail-character.component';
+import { DetailEpisodeComponent } from './pages/detail-episode/detail-episode.component';
+import { DetailLocationComponent } from './pages/detail-location/detail-location.component';
 import { EpisodesComponent } from './pages/episodes/episodes.component';
 import { LocationsComponent } from './pages/locations/locations.component';
 
@@ -25,6 +27,14 @@ const routes: Routes = [
       {
         path: 'characters/:id',
         component: DetailCharacterComponent
+      },
+      {
+        path: 'episodes/:id',
+        component: DetailEpisodeComponent
+      },
+      {
+        path: 'locations/:id',
+        component: DetailLocationComponent
       }
     ]
   }

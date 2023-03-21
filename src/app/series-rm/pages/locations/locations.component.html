@@ -1,1 +1,38 @@
-<p>locations works!</p>
+<div class="main-wrapper">
+
+    <div class="row w-12">
+        <app-location-bar></app-location-bar>
+    </div>
+    
+    <div>
+        <app-search-bar section="locations"></app-search-bar>
+    </div>
+
+    <div class="row cards-wrapper w-12">
+
+        <div *ngIf="locations.length === 0; else listLocations" >
+            <span>Location not found</span>
+        </div>
+
+        <ng-template #listLocations>
+            
+            <div *ngFor="let location of locations" class="sm:w-5 md:w-12rem lg:w-2">
+                <app-card [subtitle]="location.name"
+                          [location]="location"
+                          routerLink="/rm/locations/{{location.id}}"
+                          linkCard="p-card-hover">
+                </app-card>
+            </div>
+    
+            <div class="flex justify-content-center w-12">
+                <app-paginator [totalCards]="20"></app-paginator>
+            </div>
+
+        </ng-template>
+
+    </div>
+
+
+    
+
+</div>

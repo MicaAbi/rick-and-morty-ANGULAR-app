@@ -1,0 +1,35 @@
+<div class="main-wrapper">
+
+    <div class="row w-12">
+        <app-location-bar></app-location-bar>
+    </div>
+
+    <span *ngIf="!location; else detailLocation">
+        Espere por favor...
+    </span>
+
+    <ng-template #detailLocation>
+
+        <section class="flex flex-wrap w-12 justify-content-between gap-4">
+
+            <div class="w-12 md:w-3">
+                <app-card title="Location Info"
+                          [location]="location"
+                          [detail]="true">
+                </app-card>
+            </div>
+    
+            <div class="wrapper w-12 md:w-8">
+                <h3 class="w-12">Residents in this location</h3>
+                <hr class="w-12 mt-3 mb-3">
+                <div class="link-list">
+                    <app-detail-link *ngFor="let character of location.residents">
+                    </app-detail-link>
+                </div>  
+            </div>
+
+        </section>
+
+    </ng-template>
+
+</div>

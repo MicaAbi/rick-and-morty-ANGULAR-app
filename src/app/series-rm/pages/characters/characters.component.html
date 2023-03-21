@@ -20,7 +20,8 @@
             <div *ngFor="let character of characters" class="sm:w-5 md:w-12rem lg:w-2">
                 <app-card [subtitle]="character.name"
                           [urlImg]="character.image"
-                          routerLink="/rm/characters/{{character.id}}">
+                          routerLink="/rm/characters/{{character.id}}"
+                          linkCard="p-card-hover">
                 </app-card>
                 
             </div>
