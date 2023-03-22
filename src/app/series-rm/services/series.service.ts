@@ -41,9 +41,9 @@ export class SeriesService {
 
   constructor(private http: HttpClient) { }
 
-  // getCharacters(): Observable<Character[]> {
-  //   return of([...this._characters])
-  // }
+  getCharacters(): Observable<Character[]> {
+    return of(this._characters)
+  }
 
   getOneCharacter(): Observable<Character> {
     return of(this._oneCharacter)
@@ -78,6 +78,8 @@ export class SeriesService {
 
   }
 
+  // Functions for Characters
+
   loadCharacters(query: string = '') {
 
     const params = new HttpParams()
@@ -103,18 +105,46 @@ export class SeriesService {
           )
   }
 
+  loadMultipleCharacters(ids: number[]): void {
+    this.http.get<Character[]>(`${this._characterEndpointApi}/${ids}`)
+        .subscribe({
+          next: characters => {
+            this._characters = characters
+            console.log(characters)
+          },
+          error: err => console.log(err)
+        })
+  }
+
   loadASingleCharacter( id:number ) {
     this.http.get<Character>(`${this._characterEndpointApi}/${id}`)
         .subscribe(
           {
             next: char => {
               this._oneCharacter = char
-              console.log(this._oneCharacter)
+              let episodeIdList: number[] = this.getEpisodesID(char)
+              this.loadMultipleEpisodes(episodeIdList)
             },
             error: err => console.log(err)
           }
         )
   }
+
+  getEpisodesID(character: Character): number[] {
+    let episodes: string[] = character.episode
+
+    let positionLastSlash: number = episodes[0].lastIndexOf('/')
+    let episodesIdList: number[] = []
+
+    episodes.forEach( episodio => {
+        const episodeID: number = parseInt(episodio.slice(positionLastSlash + 1))
+        episodesIdList.push(episodeID)
+    })
+
+    return episodesIdList
+  }
+  
+  // Functions for Episodes
 
   loadEpisodes(query: string = '', page: number = 1): void {
     
@@ -137,18 +167,48 @@ export class SeriesService {
           )
   }
 
+  loadMultipleEpisodes(ids: number[]): void {
+    this.http.get<Episode[]>(`${this._episodeEndpointApi}/${ids}`)
+        .subscribe({
+          next: episodes => {
+            this._episodes = episodes
+            console.log(this._episodes)
+          },
+          error: err => console.log(err)
+        })
+  }
+
   loadASingleEpisode(id: number): void {
     this.http.get<Episode>(`${this._episodeEndpointApi}/${id}`)
           .subscribe(
             {
               next: episode => {
                 this._oneEpisode = episode
+                let episodeCharactersID: number[] = this.getCharactersID(episode)
+                this.loadMultipleCharacters(episodeCharactersID)
                 console.log(this._oneEpisode)
               },
               error: err => console.log(err)
             }
           )
   }
+
+  getCharactersID(episode: Episode): number[] {
+    let characters: string[] = episode.characters
+
+    let positionLastSlash: number = characters[0].lastIndexOf('/')
+    let charactersIdList: number[] = []
+
+    characters.forEach(character => {
+        const characterID: number = parseInt(character.slice(positionLastSlash + 1))
+        charactersIdList.push(characterID)
+    })
+
+    return charactersIdList
+  }
+
+
+  // Functions for Locations
 
   loadLocations(query: string = '') {
 
@@ -173,11 +233,27 @@ export class SeriesService {
           {
             next: location => {
               this._oneLocation = location
-              console.log(location);
-              
+              let characterIdList: number[] = this.getResidentsID(location)
+              this.loadMultipleCharacters(characterIdList)
+              console.log(location)
             },
             error: err => console.log(err)
           }
         )
   }
+
+  getResidentsID(location: Location): number[] {
+    let characters: string[] = location.residents
+
+    let positionLastSlash: number = characters[0].lastIndexOf('/')
+    let charactersIdList: number[] = []
+
+    characters.forEach(character => {
+        const characterID: number = parseInt(character.slice(positionLastSlash + 1))
+        charactersIdList.push(characterID)
+    })
+
+    return charactersIdList
+  }
+
 }

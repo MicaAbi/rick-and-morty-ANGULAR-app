@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { SeriesService } from '../../services/series.service';
+import { Character } from '../../interfaces/allCharacters.interface';
 import { Location } from '../../interfaces/allLocations'
+import { SeriesService } from '../../services/series.service';
 
 @Component({
   selector: 'app-detail-location',
@@ -13,11 +14,18 @@ import { Location } from '../../interfaces/allLocations'
 export class DetailLocationComponent implements OnInit, OnDestroy {
 
   locationSubscrition!: Subscription
+  charactersSubscrition!: Subscription
 
   get location(): Location {
     let place!: Location
     this.locationSubscrition = this.seriesService.getOneLocation().subscribe(resp => place = resp)
     return place
+  }
+
+  get residents(): Character[] {
+    let characters!: Character[]
+    this.charactersSubscrition = this.seriesService.getCharacters().subscribe(resp => characters = resp)
+    return characters
   }
 
   constructor(
@@ -34,6 +42,7 @@ export class DetailLocationComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
       this.locationSubscrition.unsubscribe()
+      this.charactersSubscrition.unsubscribe()
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { SeriesService } from '../../services/series.service';
 import { Location } from '../../interfaces/allLocations'
@@ -8,11 +9,13 @@ import { Location } from '../../interfaces/allLocations'
   templateUrl: './locations.component.html',
   styleUrls: ['./locations.component.css']
 })
-export class LocationsComponent implements OnInit {
+export class LocationsComponent implements OnInit, OnDestroy {
+
+  locationsSubscrition!: Subscription
 
   get locations(): Location[] {
     let places!: Location[]
-    this.seriesService.getLocations().subscribe(resp => places = resp)
+    this.locationsSubscrition = this.seriesService.getLocations().subscribe(resp => places = resp)
     return places
   }
 
@@ -20,6 +23,10 @@ export class LocationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.seriesService.loadLocations()
+  }
+
+  ngOnDestroy(): void {
+    this.locationsSubscrition.unsubscribe()
   }
 
 }

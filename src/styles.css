@@ -32,10 +32,9 @@ body {
     row-gap: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-
 }
 
-.wrapper {
+.common-wrapper {
     background-color: var(--surface-a);
     padding: 15px;
     border-radius: 3px;
@@ -55,6 +54,18 @@ body {
     margin-top: 20px;
 }
 
+.item-link-list {
+    display: block;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    color: var(--primary-color)
+}
+
+.item-link-list:hover {
+    color: white;
+    cursor: pointer;
+}
 
 /* BREAK POINTS */
 
