@@ -22,11 +22,8 @@ export class PaginatorComponent {
   ) {}
 
   paginator(event: any) {    
-    console.log(event)
     
     let currentPage: number = event.page + 1
-
-    console.log(currentPage)
     
     switch(this.section) {
       case 'characters':
