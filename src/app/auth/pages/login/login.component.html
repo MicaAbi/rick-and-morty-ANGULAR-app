@@ -1,0 +1,51 @@
+<div class="main-wrapper-login">
+    <div class="login-img-container sm:w-12 lg:w-6 mt-4">
+        <img class="login-img" src="assets/images/rym-login.png" alt="">
+    </div>
+    <div class="form-container sm:w-12 md:w-10 lg:w-5">
+        <div *ngIf="registerStatus === 'Ok'" class="card">
+            <p-messages [value]="messages" [closable]="true"></p-messages>
+        </div>
+        <form (ngSubmit)="loginUser()" class="p-card flex justify-content-center px-3 py-7">
+            <div class="w-10">
+                <div *ngIf="loginStatus === 'Invalid credentials' " class="mb-4 error">
+                    Invalid credentials
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block mb-2">Email</label>
+                    <input type="email" 
+                           pInputText 
+                           class="w-12" 
+                           [(ngModel)]="user.mail" 
+                           (focusout)="correctEmail()"
+                           placeholder="email@example.com" 
+                           id="email" 
+                           name="email" />
+                    <small *ngIf="emailMessage" class="block error mt-2">{{ emailMessage }}</small>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block mb-2">Password</label>
+                    <input type="password" 
+                           pInputText 
+                           [(ngModel)]="user.password" 
+                           (focusout)="correctPassword()"
+                           class="w-12" 
+                           id="password" 
+                           name="password" />
+                    <small *ngIf="passwordMessage" class="block error mt-2">{{ passwordMessage }}</small>
+                </div>
+                <div class="mb-6">
+                    <button type="submit" 
+                            pButton 
+                            class="justify-content-center w-12"> 
+                            Log in
+                    </button>
+                </div>
+                <a class="item-link-list" 
+                   routerLink="/register">
+                   New around here? Sign up
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

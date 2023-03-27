@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import {MenuItem} from 'primeng/api';
+import { Router } from '@angular/router';
+
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-menu',
@@ -10,23 +13,36 @@ export class MenuComponent {
 
   items: MenuItem[] = []
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-      this.items = [
-          {
-              label: 'Characters',
-              routerLink: 'rm/characters'
-          },
-          {
-              label: 'Episodes',
-              routerLink: 'rm/episodes'
-          },
-          {
-              label: 'Locations',
-              routerLink: 'rm/locations'
-          }
-      ];
+
+    if (!this.authService.isAutenticated()) {
+      this.router.navigate(['/login'])
+    }
+
+    this.items = [
+      {
+        label: 'Characters',
+        routerLink: '/rm/characters'
+      },
+      {
+        label: 'Episodes',
+        routerLink: '/rm/episodes'
+      },
+      {
+        label: 'Locations',
+        routerLink: '/rm/locations'
+      }
+    ]
+
+  }
+
+  logout(): void {
+    this.authService.logout()
   }
 
 }

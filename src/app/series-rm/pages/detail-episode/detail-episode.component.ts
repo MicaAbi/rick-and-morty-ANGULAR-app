@@ -41,8 +41,8 @@ export class DetailEpisodeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.episodeSubscrition.unsubscribe()
-    this.charactersSubscrition.unsubscribe()
+    this.episodeSubscrition?.unsubscribe()
+    this.charactersSubscrition?.unsubscribe()
   }
 
 }

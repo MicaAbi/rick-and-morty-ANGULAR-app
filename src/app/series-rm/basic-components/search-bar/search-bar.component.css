@@ -1,9 +1,8 @@
 .search-input{
     background-color: var(--surface-a);
     padding: 10.4px;
-    border-radius: 3px;
     border: 1px solid var(--surface-d);
     color: var(--text-color);
     width: 30vw;
-    min-width: 200px;
+    min-width: 180px;
 }

@@ -10,7 +10,7 @@ h1 {
 .img-error {
     opacity: 90%;
     max-width: 40vw;
-    max-height: 70vh;
+    max-height: 80vh;
     margin: auto;
     overflow: visible;
 }
@@ -21,6 +21,12 @@ h1 {
     justify-content: center;
     align-items: center;
     padding: 60px 60px 0px 60px;
+}
+
+@media (max-width: 992px) {
+    .img-error {
+        margin-top: 40px;
+    }
 }
 
 @media (min-width: 992px) {

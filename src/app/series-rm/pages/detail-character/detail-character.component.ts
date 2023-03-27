@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { Character } from '../../interfaces/allCharacters.interface';
 import { Episode } from '../../interfaces/allEpisodes';
 import { SeriesService } from '../../services/series.service';
@@ -13,7 +14,6 @@ import { SeriesService } from '../../services/series.service';
 })
 export class DetailCharacterComponent implements OnInit, OnDestroy {
 
-  // character!: Character
   characterSubscrition!: Subscription
   episodesSubscrition!: Subscription
 
@@ -26,7 +26,6 @@ export class DetailCharacterComponent implements OnInit, OnDestroy {
   get episodes(): Episode[] {
     let episodes!: Episode[]
     this.episodesSubscrition = this.seriesService.getEpisodes().subscribe(resp => episodes = resp)
-    console.log(episodes);
     return episodes
   }
 
@@ -40,16 +39,11 @@ export class DetailCharacterComponent implements OnInit, OnDestroy {
       .subscribe( ({id}) => {
         this.seriesService.loadASingleCharacter(id)
       })
-
-    // this.characterSubscrition = this.seriesService.getOneCharacter()
-    //     .subscribe({
-    //       next: char => this.character = char
-    //     })
-
   }
 
   ngOnDestroy(): void {
-      this.characterSubscrition.unsubscribe()
-      this.episodesSubscrition.unsubscribe()
+      this.characterSubscrition?.unsubscribe()
+      this.episodesSubscrition?.unsubscribe()
   }
+
 }

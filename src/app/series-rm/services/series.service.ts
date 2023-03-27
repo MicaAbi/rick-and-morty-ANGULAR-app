@@ -106,11 +106,10 @@ export class SeriesService {
   }
 
   loadMultipleCharacters(ids: number[]): void {
-    this.http.get<Character[]>(`${this._characterEndpointApi}/${ids}`)
+    this.http.get<Character[]>(`${this._characterEndpointApi}/[${ids}]`)
         .subscribe({
           next: characters => {
             this._characters = characters
-            console.log(characters)
           },
           error: err => console.log(err)
         })
@@ -136,8 +135,8 @@ export class SeriesService {
     let positionLastSlash: number = episodes[0].lastIndexOf('/')
     let episodesIdList: number[] = []
 
-    episodes.forEach( episodio => {
-        const episodeID: number = parseInt(episodio.slice(positionLastSlash + 1))
+    episodes.forEach( episode => {
+        const episodeID: number = parseInt(episode.slice(positionLastSlash + 1))
         episodesIdList.push(episodeID)
     })
 
@@ -157,7 +156,6 @@ export class SeriesService {
             {
               next: resp => {
                 this._episodes = resp.results
-                console.log(this._episodes)
               },
               error: err => {
                 this._episodes = []
@@ -168,11 +166,10 @@ export class SeriesService {
   }
 
   loadMultipleEpisodes(ids: number[]): void {
-    this.http.get<Episode[]>(`${this._episodeEndpointApi}/${ids}`)
+    this.http.get<Episode[]>(`${this._episodeEndpointApi}/[${ids}]`)
         .subscribe({
           next: episodes => {
             this._episodes = episodes
-            console.log(this._episodes)
           },
           error: err => console.log(err)
         })
@@ -186,7 +183,6 @@ export class SeriesService {
                 this._oneEpisode = episode
                 let episodeCharactersID: number[] = this.getCharactersID(episode)
                 this.loadMultipleCharacters(episodeCharactersID)
-                console.log(this._oneEpisode)
               },
               error: err => console.log(err)
             }
@@ -220,7 +216,6 @@ export class SeriesService {
             {
               next: resp => {
                 this._locations = resp.results
-                console.log(resp)
               },
               error: err => console.log(err)
             }
@@ -235,7 +230,6 @@ export class SeriesService {
               this._oneLocation = location
               let characterIdList: number[] = this.getResidentsID(location)
               this.loadMultipleCharacters(characterIdList)
-              console.log(location)
             },
             error: err => console.log(err)
           }

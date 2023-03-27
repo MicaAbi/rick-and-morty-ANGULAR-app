@@ -1,10 +1,16 @@
-<p-menubar [model]="items">
+<p-menubar [model]="items" [style]="{'min-width': '300px'}">
     <ng-template pTemplate="start">
         <img src="assets/images/rym_logo.png" width="150px" class="mr-4 ml-4">
     </ng-template>
     <ng-template pTemplate="end">
         <div class="mr-4">
-            <button pButton type="button" label="Quit" icon="pi pi-power-off" class="p-button-text p-button-plain"></button>
+            <button pButton 
+                    type="button" 
+                    label="Quit" 
+                    icon="pi pi-power-off" 
+                    class="p-button-text p-button-plain"
+                    (click)="logout()">
+            </button>
         </div>
     </ng-template>
 </p-menubar>

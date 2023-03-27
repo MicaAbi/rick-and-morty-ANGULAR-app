@@ -21,7 +21,18 @@ body {
     display: flex;
     flex-wrap: wrap;
     row-gap: 24px;
+    align-items: center;
 }
+
+.main-wrapper-login {
+    padding: 40px 80px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 24px;
+    justify-content: space-around;
+    align-items: center;
+}
+
 
 .cards-wrapper {
     min-height: 35vh;
@@ -67,11 +78,38 @@ body {
     cursor: pointer;
 }
 
+.character-detail-card {
+    width: 100%;
+}
+
+.character-detail-list {
+    width: 100%;
+}
+
+.error {
+    color: #ef9a9a;
+}
+
 /* BREAK POINTS */
 
 @media (max-width: 768px) {
     .cards-wrapper {
         min-height: 30vh;
+    }
+
+    .main-wrapper-login {
+        padding: 40px 40px;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .character-detail-card {
+        width: 22%;
+    }
+
+    .character-detail-list {
+        width: 72%;
     }
 }
 

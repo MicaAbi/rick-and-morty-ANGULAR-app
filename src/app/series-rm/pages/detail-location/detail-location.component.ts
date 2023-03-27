@@ -41,8 +41,8 @@ export class DetailLocationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.locationSubscrition.unsubscribe()
-      this.charactersSubscrition.unsubscribe()
+      this.locationSubscrition?.unsubscribe()
+      this.charactersSubscrition?.unsubscribe()
   }
 
 }

@@ -1,6 +1,9 @@
-<p-card [header]="title" [subheader]="subtitle" styleClass="p-card-shadow {{linkCard}}" [style]="{'min-width': '180px'}">
+<p-card [header]="title" [subheader]="subtitle" styleClass="p-card-shadow {{linkCard}}" [style]="{'min-width': '200px'}">
     <ng-template pTemplate="header">
-        <img *ngIf="urlImg" alt="Card" [src]="urlImg">
+        <img *ngIf="urlImg"
+             alt="Card"
+            [src]="urlImg"
+            loading="lazy">
     </ng-template>
     <div *ngIf="character">
         <hr>
