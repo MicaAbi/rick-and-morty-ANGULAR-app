@@ -1,8 +1,8 @@
 <div class="paginator">
     <p-paginator [rows]="20" 
+                 [pageLinkSize]="3"
                  [totalRecords]="totalCards" 
-                 [pageLinkSize]="1"
-                 (onPageChange)="paginate($event)">
+                 (onPageChange)="paginator($event)">
     </p-paginator>
 </div>
 

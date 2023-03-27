@@ -24,11 +24,10 @@
                           routerLink="/rm/characters/{{character.id}}"
                           linkCard="p-card-hover">
                 </app-card>
-                
             </div>
     
             <div class="flex justify-content-center w-12">
-                <app-paginator [totalCards]="infoResp.count"></app-paginator>
+                <app-paginator section="characters" ></app-paginator>
             </div>
 
         </ng-template>

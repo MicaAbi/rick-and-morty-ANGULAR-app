@@ -6,8 +6,8 @@ export interface ResponseAllLocations {
 export interface Info {
     count: number;
     pages: number;
-    next:  string;
-    prev:  null;
+    next:  string | null;
+    prev:  string | null;
 }
 
 export interface Location {

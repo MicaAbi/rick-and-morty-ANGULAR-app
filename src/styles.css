@@ -84,6 +84,12 @@ body {
 
 .character-detail-list {
     width: 100%;
+    min-width: 200px;
+}
+
+.paginator {
+    margin: 20px;
+    min-width: 340px;
 }
 
 .error {

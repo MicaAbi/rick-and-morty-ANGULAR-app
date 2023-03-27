@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { Character } from '../../interfaces/allCharacters.interface';
+import { Character, Info } from '../../interfaces/allCharacters.interface';
 import { SeriesService } from '../../services/series.service';
 
 @Component({
@@ -9,35 +9,24 @@ import { SeriesService } from '../../services/series.service';
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.css']
 })
-export class CharactersComponent implements OnInit {
+export class CharactersComponent implements OnInit, OnDestroy {
 
-  // characters: Character[] = []
+  charactersSubscription!: Subscription
 
-  get characters() {
-    return this.seriesService.characters
-  }
-
-  get infoResp() {
-    return this.seriesService.infoResp
+  get characters(): Character[] {
+    let characters!: Character[]
+    this.charactersSubscription = this.seriesService.getCharacters().subscribe(resp => characters = resp)
+    return characters
   }
 
   constructor(private seriesService: SeriesService) {}
 
   ngOnInit(): void {
     this.seriesService.loadCharacters()
-    // this.getCharacters()    
   }
 
-  // getCharacters() {
-  //   this.seriesService.getCharacters()
-  //     .subscribe(
-  //       res => {
-  //         this.characters = res
-  //         console.log('Salió bien')
-  //         console.log(res);
-  //       },
-  //       err => console.log('Error al obtener los personajes')
-  //     )
-  // }
+  ngOnDestroy(): void {
+    this.charactersSubscription?.unsubscribe()
+  }
 
 }

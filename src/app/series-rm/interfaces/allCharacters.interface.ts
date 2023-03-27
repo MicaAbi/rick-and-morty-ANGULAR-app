@@ -6,7 +6,7 @@ export interface ResponseAllCharacters {
 export interface Info {
     count: number;
     pages: number;
-    next:  string;
+    next:  string | null;
     prev:  string | null;
 }
 

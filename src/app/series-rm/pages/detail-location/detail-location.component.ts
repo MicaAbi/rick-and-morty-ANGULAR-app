@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { Character } from '../../interfaces/allCharacters.interface';
-import { Location } from '../../interfaces/allLocations'
+import { Location } from '../../interfaces/allLocations.interface'
 import { SeriesService } from '../../services/series.service';
 
 @Component({
@@ -13,18 +13,18 @@ import { SeriesService } from '../../services/series.service';
 })
 export class DetailLocationComponent implements OnInit, OnDestroy {
 
-  locationSubscrition!: Subscription
-  charactersSubscrition!: Subscription
+  locationSubscription!: Subscription
+  charactersSubscription!: Subscription
 
   get location(): Location {
     let place!: Location
-    this.locationSubscrition = this.seriesService.getOneLocation().subscribe(resp => place = resp)
+    this.locationSubscription = this.seriesService.getOneLocation().subscribe(resp => place = resp)
     return place
   }
 
   get residents(): Character[] {
     let characters!: Character[]
-    this.charactersSubscrition = this.seriesService.getCharacters().subscribe(resp => characters = resp)
+    this.charactersSubscription = this.seriesService.getCharacters().subscribe(resp => characters = resp)
     return characters
   }
 
@@ -41,8 +41,8 @@ export class DetailLocationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.locationSubscrition?.unsubscribe()
-      this.charactersSubscrition?.unsubscribe()
+      this.locationSubscription?.unsubscribe()
+      this.charactersSubscription?.unsubscribe()
   }
 
 }

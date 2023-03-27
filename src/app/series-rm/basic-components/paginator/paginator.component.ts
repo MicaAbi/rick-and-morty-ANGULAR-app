@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import { SeriesService } from '../../services/series.service';
+
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
@@ -7,12 +9,37 @@ import { Component, Input } from '@angular/core';
 })
 export class PaginatorComponent {
 
-  @Input() totalCards: number = 0
+  @Input() section: string = ''
 
-  paginate(event: any) {
-    console.log(this.totalCards);
+  get totalCards(): number {
+    let count!: number
+    this.seriesService.getInfoResp().subscribe(resp => count = resp.count)
+    return count
+  }
+
+  constructor(
+    private seriesService: SeriesService
+  ) {}
+
+  paginator(event: any) {    
+    console.log(event)
     
-    console.log(event);
+    let currentPage: number = event.page + 1
+
+    console.log(currentPage)
+    
+    switch(this.section) {
+      case 'characters':
+        this.seriesService.loadCharacters('', currentPage )
+        break;
+      case 'episodes':
+        this.seriesService.loadEpisodes('', currentPage)
+        break;
+      case 'locations':
+        this.seriesService.loadLocations('', currentPage)
+        break
+    }
+
   }
 
 }

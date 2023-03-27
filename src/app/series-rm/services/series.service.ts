@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { ResponseAllCharacters, Character, Info } from '../interfaces/allCharacters.interface';
-import { Episode, ResponseAllEpisodes } from '../interfaces/allEpisodes';
-import { Location, ResponseAllLocations } from '../interfaces/allLocations';
+import { Episode, ResponseAllEpisodes } from '../interfaces/allEpisodes.interface';
+import { Location, ResponseAllLocations } from '../interfaces/allLocations.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,15 +31,11 @@ export class SeriesService {
   private _episodeEndpointApi: string = 'https://rickandmortyapi.com/api/episode'
   private _episodeLocationApi: string = 'https://rickandmortyapi.com/api/location'
 
-  get characters() {
-    return [...this._characters]
-  }
-
-  get infoResp() {
-    return this._infoResp
-  }
-
   constructor(private http: HttpClient) { }
+
+  getInfoResp(): Observable<Info> {
+    return of(this._infoResp)
+  }
 
   getCharacters(): Observable<Character[]> {
     return of(this._characters)
@@ -80,29 +76,29 @@ export class SeriesService {
 
   // Functions for Characters
 
-  loadCharacters(query: string = '') {
+  loadCharacters(query: string = '', page: number = 1): void {
 
     const params = new HttpParams()
           .set('name', query)
-          .set('page', 1)
+          .set('page', page)
 
     this.http.get<ResponseAllCharacters>(this._characterEndpointApi, { params })
-          .subscribe(
-            resp => { 
-              this._infoResp = resp.info 
+          .subscribe({
+            next: resp => {
               this._characters = resp.results
+              this._infoResp = resp.info
             },
-            err => {
+            error: err => {
               console.log('Error en la petición')
-              this._characters = []
-              this._infoResp = {
-                count: 0,
-                pages: 0,
-                next:  '',
-                prev:  ''
-              }
+                this._characters = []
+                this._infoResp = {
+                  count: 0,
+                  pages: 0,
+                  next:  '',
+                  prev:  ''
+                }
             }
-          )
+          })
   }
 
   loadMultipleCharacters(ids: number[]): void {
@@ -156,6 +152,7 @@ export class SeriesService {
             {
               next: resp => {
                 this._episodes = resp.results
+                this._infoResp = resp.info
               },
               error: err => {
                 this._episodes = []
@@ -206,16 +203,18 @@ export class SeriesService {
 
   // Functions for Locations
 
-  loadLocations(query: string = '') {
+  loadLocations(query: string = '', page: number = 1): void {
 
     const params = new HttpParams()
           .set('name', query)
+          .set('page', page)
 
     this.http.get<ResponseAllLocations>(this._episodeLocationApi, { params })
           .subscribe(
             {
               next: resp => {
                 this._locations = resp.results
+                this._infoResp = resp.info
               },
               error: err => console.log(err)
             }

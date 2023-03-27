@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { SeriesService } from '../../services/series.service';
-import { Location } from '../../interfaces/allLocations'
+import { Location } from '../../interfaces/allLocations.interface'
 
 @Component({
   selector: 'app-locations',
@@ -11,11 +11,11 @@ import { Location } from '../../interfaces/allLocations'
 })
 export class LocationsComponent implements OnInit, OnDestroy {
 
-  locationsSubscrition!: Subscription
+  locationsSubscription!: Subscription
 
   get locations(): Location[] {
     let places!: Location[]
-    this.locationsSubscrition = this.seriesService.getLocations().subscribe(resp => places = resp)
+    this.locationsSubscription = this.seriesService.getLocations().subscribe(resp => places = resp)
     return places
   }
 
@@ -26,7 +26,7 @@ export class LocationsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.locationsSubscrition.unsubscribe()
+    this.locationsSubscription?.unsubscribe()
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { SeriesService } from '../../services/series.service';
-import { Episode } from '../../interfaces/allEpisodes';
+import { Episode } from '../../interfaces/allEpisodes.interface';
 
 @Component({
   selector: 'app-episodes',
@@ -11,11 +11,11 @@ import { Episode } from '../../interfaces/allEpisodes';
 })
 export class EpisodesComponent implements OnInit, OnDestroy {
 
-  episodesSubscrition!: Subscription
+  episodesSubscription!: Subscription
 
   get episodes(): Episode[] {
     let ep!: Episode[]
-    this.episodesSubscrition = this.seriesService.getEpisodes().subscribe(resp => ep = resp)
+    this.episodesSubscription = this.seriesService.getEpisodes().subscribe(resp => ep = resp)
     return ep
   }
 
@@ -26,7 +26,7 @@ export class EpisodesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.episodesSubscrition.unsubscribe()
+    this.episodesSubscription?.unsubscribe()
   }
   
 }

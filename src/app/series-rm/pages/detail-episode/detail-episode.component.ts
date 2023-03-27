@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { Character } from '../../interfaces/allCharacters.interface';
-import { Episode } from '../../interfaces/allEpisodes';
+import { Episode } from '../../interfaces/allEpisodes.interface';
 import { SeriesService } from '../../services/series.service';
 
 @Component({
@@ -13,18 +13,18 @@ import { SeriesService } from '../../services/series.service';
 })
 export class DetailEpisodeComponent implements OnInit, OnDestroy {
 
-  episodeSubscrition!: Subscription
-  charactersSubscrition!: Subscription
+  episodeSubscription!: Subscription
+  charactersSubscription!: Subscription
 
   get episode(): Episode {
     let episode!: Episode
-    this.episodeSubscrition = this.seriesService.getOneEpisode().subscribe(resp => episode = resp)
+    this.episodeSubscription = this.seriesService.getOneEpisode().subscribe(resp => episode = resp)
     return episode
   }
 
   get charactersInEpisode(): Character[] {
     let characters!: Character[]
-    this.charactersSubscrition = this.seriesService.getCharacters().subscribe(resp => characters = resp)
+    this.charactersSubscription = this.seriesService.getCharacters().subscribe(resp => characters = resp)
     return characters
   }
 
@@ -41,8 +41,8 @@ export class DetailEpisodeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.episodeSubscrition?.unsubscribe()
-    this.charactersSubscrition?.unsubscribe()
+    this.episodeSubscription?.unsubscribe()
+    this.charactersSubscription?.unsubscribe()
   }
 
 }

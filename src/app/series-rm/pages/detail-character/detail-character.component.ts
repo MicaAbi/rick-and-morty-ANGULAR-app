@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Character } from '../../interfaces/allCharacters.interface';
-import { Episode } from '../../interfaces/allEpisodes';
+import { Episode } from '../../interfaces/allEpisodes.interface';
 import { SeriesService } from '../../services/series.service';
 
 @Component({
@@ -14,18 +14,18 @@ import { SeriesService } from '../../services/series.service';
 })
 export class DetailCharacterComponent implements OnInit, OnDestroy {
 
-  characterSubscrition!: Subscription
-  episodesSubscrition!: Subscription
+  characterSubscription!: Subscription
+  episodesSubscription!: Subscription
 
   get character(): Character {
     let char!: Character
-    this.characterSubscrition = this.seriesService.getOneCharacter().subscribe( resp => {char = resp})
+    this.characterSubscription = this.seriesService.getOneCharacter().subscribe( resp => {char = resp})
     return char
   }
 
   get episodes(): Episode[] {
     let episodes!: Episode[]
-    this.episodesSubscrition = this.seriesService.getEpisodes().subscribe(resp => episodes = resp)
+    this.episodesSubscription = this.seriesService.getEpisodes().subscribe(resp => episodes = resp)
     return episodes
   }
 
@@ -42,8 +42,8 @@ export class DetailCharacterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.characterSubscrition?.unsubscribe()
-      this.episodesSubscrition?.unsubscribe()
+      this.characterSubscription?.unsubscribe()
+      this.episodesSubscription?.unsubscribe()
   }
 
 }

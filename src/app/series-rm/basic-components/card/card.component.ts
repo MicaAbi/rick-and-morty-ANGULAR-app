@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 import { Character } from '../../interfaces/allCharacters.interface';
-import { Episode } from '../../interfaces/allEpisodes';
-import { Location } from '../../interfaces/allLocations';
+import { Episode } from '../../interfaces/allEpisodes.interface';
+import { Location } from '../../interfaces/allLocations.interface';
 
 @Component({
   selector: 'app-card',
