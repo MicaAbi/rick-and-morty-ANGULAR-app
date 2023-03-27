@@ -11,6 +11,11 @@ const routes: Routes = [
     loadChildren: () => import('./series-rm/series-rm.module').then( m => m.SeriesRMModule),
   },
   {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
